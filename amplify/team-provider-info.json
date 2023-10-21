@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-peerpal-dev-12755-authRole",
+      "UnauthRoleArn": "arn:aws:iam::111820670368:role/amplify-peerpal-dev-12755-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::111820670368:role/amplify-peerpal-dev-12755-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-peerpal-dev-12755-deployment",
+      "UnauthRoleName": "amplify-peerpal-dev-12755-unauthRole",
+      "StackName": "amplify-peerpal-dev-12755",
+      "StackId": "arn:aws:cloudformation:us-east-2:111820670368:stack/amplify-peerpal-dev-12755/f9834f30-6fda-11ee-9c81-0a2c49b387bf",
+      "AmplifyAppId": "d2symf9l1g7cah"
+    },
+    "categories": {
+      "auth": {
+        "peerpalec889d6c": {}
+      },
+      "api": {
+        "peerpal": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "peerpal",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authpeerpalec889d6c",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
