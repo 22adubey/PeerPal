@@ -3,8 +3,35 @@
 input AMPLIFY {
   globalAuthRule: AuthRule = { allow: public }
 } # FOR TESTING ONLY!
+type Location {
+  lat: Float!
+  lng: Float!
+}
+
 type User
   @model
   @auth(rules: [{ allow: owner }]) { # Dummy User For Now
   id: ID!
+  birthday: String!
+  gender: String!
+  location: Location!
+  perferredDistance: Int!
+  profilePicturePath: String!
+  firstName: String!
+  lastName: String!
+  biography: String!
+}
+
+type Peer @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  interests: [String]
+  matches: [Peer]
+}
+
+type Coach @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  subjects: [String]
+  rating: Float
+  students: [Peer]
+  reviews: [String]
 }
