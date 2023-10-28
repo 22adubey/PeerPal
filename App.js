@@ -10,10 +10,13 @@ import TrackSelection from "./OnboardingFiles/TrackSelection";
 import LearnedOnboarding from "./OnboardingFiles/LearnerOnboarding";
 import MainScreen from "./MainScreenFiles/MainScreen";
 import { NavigationContainer } from "@react-navigation/native";
+import Amplify from "@aws-amplify/core"
+import config from './src/aws-exports';
+import {withAuthenticator} from 'aws-amplify-react-native'
 
+Amplify.configure(config)
 const Stack = createStackNavigator();
-
-export default function App() {
+function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -32,6 +35,7 @@ export default function App() {
     </NavigationContainer>
   );
 }
+export default withAuthenticator(App)
 
 const styles = StyleSheet.create({
   container: {

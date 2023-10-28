@@ -14,7 +14,7 @@ const awsmobile = {
     "oauth": {
         "domain": "peerpalec889d6c-ec889d6c-dev.auth.us-east-2.amazoncognito.com",
         "scope": [
-            "phone",
+            "phone", 
             "email",
             "openid",
             "profile",
