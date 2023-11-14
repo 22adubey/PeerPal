@@ -87,12 +87,8 @@ export const createPeer = /* GraphQL */ `
     createPeer(input: $input, condition: $condition) {
       id
       interests
-      matches {
-        id
-        interests
-        createdAt
-        updatedAt
-        owner
+      coaches {
+        nextToken
         __typename
       }
       createdAt
@@ -110,12 +106,8 @@ export const updatePeer = /* GraphQL */ `
     updatePeer(input: $input, condition: $condition) {
       id
       interests
-      matches {
-        id
-        interests
-        createdAt
-        updatedAt
-        owner
+      coaches {
+        nextToken
         __typename
       }
       createdAt
@@ -133,12 +125,8 @@ export const deletePeer = /* GraphQL */ `
     deletePeer(input: $input, condition: $condition) {
       id
       interests
-      matches {
-        id
-        interests
-        createdAt
-        updatedAt
-        owner
+      coaches {
+        nextToken
         __typename
       }
       createdAt
@@ -158,11 +146,7 @@ export const createCoach = /* GraphQL */ `
       subjects
       rating
       students {
-        id
-        interests
-        createdAt
-        updatedAt
-        owner
+        nextToken
         __typename
       }
       reviews
@@ -183,11 +167,7 @@ export const updateCoach = /* GraphQL */ `
       subjects
       rating
       students {
-        id
-        interests
-        createdAt
-        updatedAt
-        owner
+        nextToken
         __typename
       }
       reviews
@@ -208,6 +188,81 @@ export const deleteCoach = /* GraphQL */ `
       subjects
       rating
       students {
+        nextToken
+        __typename
+      }
+      reviews
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const createMatch = /* GraphQL */ `
+  mutation CreateMatch(
+    $input: CreateMatchInput!
+    $condition: ModelMatchConditionInput
+  ) {
+    createMatch(input: $input, condition: $condition) {
+      id
+      fromId
+      toId
+      status
+      otherMatchID
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const updateMatch = /* GraphQL */ `
+  mutation UpdateMatch(
+    $input: UpdateMatchInput!
+    $condition: ModelMatchConditionInput
+  ) {
+    updateMatch(input: $input, condition: $condition) {
+      id
+      fromId
+      toId
+      status
+      otherMatchID
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const deleteMatch = /* GraphQL */ `
+  mutation DeleteMatch(
+    $input: DeleteMatchInput!
+    $condition: ModelMatchConditionInput
+  ) {
+    deleteMatch(input: $input, condition: $condition) {
+      id
+      fromId
+      toId
+      status
+      otherMatchID
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const createStudentCoaches = /* GraphQL */ `
+  mutation CreateStudentCoaches(
+    $input: CreateStudentCoachesInput!
+    $condition: ModelStudentCoachesConditionInput
+  ) {
+    createStudentCoaches(input: $input, condition: $condition) {
+      id
+      peerId
+      coachId
+      peer {
         id
         interests
         createdAt
@@ -215,7 +270,84 @@ export const deleteCoach = /* GraphQL */ `
         owner
         __typename
       }
-      reviews
+      coach {
+        id
+        subjects
+        rating
+        reviews
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const updateStudentCoaches = /* GraphQL */ `
+  mutation UpdateStudentCoaches(
+    $input: UpdateStudentCoachesInput!
+    $condition: ModelStudentCoachesConditionInput
+  ) {
+    updateStudentCoaches(input: $input, condition: $condition) {
+      id
+      peerId
+      coachId
+      peer {
+        id
+        interests
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      coach {
+        id
+        subjects
+        rating
+        reviews
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const deleteStudentCoaches = /* GraphQL */ `
+  mutation DeleteStudentCoaches(
+    $input: DeleteStudentCoachesInput!
+    $condition: ModelStudentCoachesConditionInput
+  ) {
+    deleteStudentCoaches(input: $input, condition: $condition) {
+      id
+      peerId
+      coachId
+      peer {
+        id
+        interests
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      coach {
+        id
+        subjects
+        rating
+        reviews
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
       createdAt
       updatedAt
       owner

@@ -25,13 +25,40 @@ type User
 type Peer @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   interests: [String]
-  matches: [Peer]
+  coaches: [Coach] @manyToMany(relationName: "StudentCoaches")
 }
 
 type Coach @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   subjects: [String]
   rating: Float
-  students: [Peer]
+
+  students: [Peer] @manyToMany(relationName: "StudentCoaches")
+
   reviews: [String]
+}
+
+enum MatchStatus {
+  MATCHED
+  REJECTED
+  PENDING
+}
+
+type Match @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  fromId: ID!
+    @index(
+      name: "matchesByFromPeer"
+      queryField: "matchesByFromPeer"
+      sortKeyFields: ["status"]
+    )
+  toId: ID!
+    @index(
+      name: "matchesByToPeer"
+      queryField: "matchesByToPeer"
+      sortKeyFields: ["status"]
+    )
+  status: MatchStatus
+
+  otherMatchID: ID!
 }

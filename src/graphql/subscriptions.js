@@ -87,12 +87,8 @@ export const onCreatePeer = /* GraphQL */ `
     onCreatePeer(filter: $filter, owner: $owner) {
       id
       interests
-      matches {
-        id
-        interests
-        createdAt
-        updatedAt
-        owner
+      coaches {
+        nextToken
         __typename
       }
       createdAt
@@ -110,12 +106,8 @@ export const onUpdatePeer = /* GraphQL */ `
     onUpdatePeer(filter: $filter, owner: $owner) {
       id
       interests
-      matches {
-        id
-        interests
-        createdAt
-        updatedAt
-        owner
+      coaches {
+        nextToken
         __typename
       }
       createdAt
@@ -133,12 +125,8 @@ export const onDeletePeer = /* GraphQL */ `
     onDeletePeer(filter: $filter, owner: $owner) {
       id
       interests
-      matches {
-        id
-        interests
-        createdAt
-        updatedAt
-        owner
+      coaches {
+        nextToken
         __typename
       }
       createdAt
@@ -158,11 +146,7 @@ export const onCreateCoach = /* GraphQL */ `
       subjects
       rating
       students {
-        id
-        interests
-        createdAt
-        updatedAt
-        owner
+        nextToken
         __typename
       }
       reviews
@@ -183,11 +167,7 @@ export const onUpdateCoach = /* GraphQL */ `
       subjects
       rating
       students {
-        id
-        interests
-        createdAt
-        updatedAt
-        owner
+        nextToken
         __typename
       }
       reviews
@@ -208,6 +188,81 @@ export const onDeleteCoach = /* GraphQL */ `
       subjects
       rating
       students {
+        nextToken
+        __typename
+      }
+      reviews
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onCreateMatch = /* GraphQL */ `
+  subscription OnCreateMatch(
+    $filter: ModelSubscriptionMatchFilterInput
+    $owner: String
+  ) {
+    onCreateMatch(filter: $filter, owner: $owner) {
+      id
+      fromId
+      toId
+      status
+      otherMatchID
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateMatch = /* GraphQL */ `
+  subscription OnUpdateMatch(
+    $filter: ModelSubscriptionMatchFilterInput
+    $owner: String
+  ) {
+    onUpdateMatch(filter: $filter, owner: $owner) {
+      id
+      fromId
+      toId
+      status
+      otherMatchID
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteMatch = /* GraphQL */ `
+  subscription OnDeleteMatch(
+    $filter: ModelSubscriptionMatchFilterInput
+    $owner: String
+  ) {
+    onDeleteMatch(filter: $filter, owner: $owner) {
+      id
+      fromId
+      toId
+      status
+      otherMatchID
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onCreateStudentCoaches = /* GraphQL */ `
+  subscription OnCreateStudentCoaches(
+    $filter: ModelSubscriptionStudentCoachesFilterInput
+    $owner: String
+  ) {
+    onCreateStudentCoaches(filter: $filter, owner: $owner) {
+      id
+      peerId
+      coachId
+      peer {
         id
         interests
         createdAt
@@ -215,7 +270,84 @@ export const onDeleteCoach = /* GraphQL */ `
         owner
         __typename
       }
-      reviews
+      coach {
+        id
+        subjects
+        rating
+        reviews
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateStudentCoaches = /* GraphQL */ `
+  subscription OnUpdateStudentCoaches(
+    $filter: ModelSubscriptionStudentCoachesFilterInput
+    $owner: String
+  ) {
+    onUpdateStudentCoaches(filter: $filter, owner: $owner) {
+      id
+      peerId
+      coachId
+      peer {
+        id
+        interests
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      coach {
+        id
+        subjects
+        rating
+        reviews
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteStudentCoaches = /* GraphQL */ `
+  subscription OnDeleteStudentCoaches(
+    $filter: ModelSubscriptionStudentCoachesFilterInput
+    $owner: String
+  ) {
+    onDeleteStudentCoaches(filter: $filter, owner: $owner) {
+      id
+      peerId
+      coachId
+      peer {
+        id
+        interests
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      coach {
+        id
+        subjects
+        rating
+        reviews
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
       createdAt
       updatedAt
       owner

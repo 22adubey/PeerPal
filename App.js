@@ -10,11 +10,11 @@ import TrackSelection from "./OnboardingFiles/TrackSelection";
 import LearnedOnboarding from "./OnboardingFiles/LearnerOnboarding";
 import MainScreen from "./MainScreenFiles/MainScreen";
 import { NavigationContainer } from "@react-navigation/native";
-import Amplify from "@aws-amplify/core"
-import config from './src/aws-exports';
-import {withAuthenticator} from 'aws-amplify-react-native'
+import Amplify from "@aws-amplify/core";
+import config from "./src/aws-exports";
+import ProfileScreen from "./MainScreenFiles/ProfileScreen";
 
-Amplify.configure(config)
+Amplify.configure(config);
 const Stack = createStackNavigator();
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
           headerShown: false,
         }}
       >
+        <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Terms" component={TermsConditions} />
@@ -35,7 +36,7 @@ function App() {
     </NavigationContainer>
   );
 }
-export default withAuthenticator(App)
+export default App;
 
 const styles = StyleSheet.create({
   container: {
